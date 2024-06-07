@@ -1,0 +1,7 @@
+input{
+    border-radius: 80px;
+}
+
+.TodoCounter span{
+    font-weight: bold;
+}
