@@ -15,7 +15,8 @@ localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
 function App() {
   
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  //const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -24,8 +25,8 @@ function App() {
   const searchedTodos = todos.filter(
     (todo) => {
       const todoText = todo.text.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return todoText.includes(searchValue.toLocaleLowerCase())
+      const searchText = searchValue.toLowerCase();//toLocaleLowerCase()
+      return todoText.includes(searchText);
     }
   );
 
@@ -47,6 +48,7 @@ function App() {
     completedTodos={completedTodos} totalTodos={totalTodos}
     searchValue={searchValue} setSearchValue={setSearchValue}
     searchedTodos={searchedTodos} completeTodo={completeTodo} deleteTodo={deleteTodo}
+    loading = {loading} error = {error}
   />;
 }
 
