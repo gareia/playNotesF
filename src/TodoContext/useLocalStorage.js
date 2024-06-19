@@ -7,7 +7,6 @@ function useLocalStorage(itemName, initialValue) {
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    console.log("ejecutando efecto");
     try{
       const localStorageItem = localStorage.getItem(itemName);
       let parsedItem;
